@@ -268,7 +268,17 @@ const HandlerServerItemUpdate = (data: { itemId: string; order: number; inventor
     }
   };
 
+const handleUnlockInventory = (key: string) => {
+  console.log("Unlock inventory:", key);
 
+  setInventories(prev =>
+    prev.map(inv =>
+      inv.InventoryKey === key
+        ? { ...inv, IsLocked: false }
+        : inv
+    )
+  );
+};
 
 
   const handleNormalizeOrder = (data: string) => {
@@ -308,6 +318,7 @@ const groupedByInventory = updatedItems.reduce((acc, item) => {
     EventController.addListener("ItemMove::ServerToClient::CEF", handleServerItemMove);
     EventController.addListener("ItemSwap::ServerToCLient::CEF", handleServerItemSwap);
     EventController.addListener("ItemRemove::ServerToClient::CEF", handleServerItemRemove);
+    EventController.addListener("Inventory::UnlockInventory::Client::CEF", handleUnlockInventory);
     EventController.addListener("Inventory::NormalizeOrder::Client::CEF", handleNormalizeOrder);
     // Cleanup function
 return () => {
@@ -315,6 +326,7 @@ return () => {
   EventController.removeListener("ItemMove::ServerToClient::CEF", handleServerItemMove);
   EventController.removeListener("ItemSwap::ServerToCLient::CEF", handleServerItemSwap);
   EventController.removeListener("ItemRemove::ServerToClient::CEF", handleServerItemRemove);
+  EventController.removeListener("Inventory::UnlockInventory::Client::CEF", handleUnlockInventory);
   EventController.removeListener("Inventory::NormalizeOrder::Client::CEF", handleNormalizeOrder);
 };
   }, [draggingItem]);

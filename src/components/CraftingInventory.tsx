@@ -114,7 +114,24 @@ export const CraftingInventory = ({
   }, []);
 
   return (
-    <div className="flex flex-col select-none 
+
+    <main className="relative">
+      {inventory.IsLocked && (
+        <div className="absolute inset-0 z-50 
+        bg-black/40 backdrop-blur-[2px]
+        flex items-center justify-center
+        cursor-not-allowed">
+
+          <div className="text-red-400 font-bold text-sm tracking-wider
+          px-4 py-2 rounded-lg
+          bg-black/60 border border-red-500/30
+          shadow-[0_0_10px_rgba(255,0,0,0.5)]">
+          🔒 Inventory Locked
+          </div>
+        </div>
+      )}
+
+      <div className="flex flex-col select-none 
                   max-w-[25vw] h-[38vw] 
                   min-w-[25vw]
                   overflow-hidden 
@@ -326,6 +343,8 @@ export const CraftingInventory = ({
         </button>
       </div>
     </div>
+    </main>
+
   );
 
 };

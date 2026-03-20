@@ -9,6 +9,7 @@ const dummyInventory: InventoryMenuDTO[] = [
     InventoryType: "CharacterStorage",
     ItemSlots: 40,
     MaxWeight: 20.0,
+    IsLocked: true,
     Items: 
     [
             {
@@ -129,6 +130,7 @@ const dummyInventory: InventoryMenuDTO[] = [
     InventoryType: "CharacterClothing",
     ItemSlots: 17,
     MaxWeight: 20.0,
+    IsLocked: false,
     Items: [
       {
         ItemId: "a485855a-962d-4cb3-890c-1cb35eebcf2d",
@@ -154,6 +156,7 @@ const dummyInventory: InventoryMenuDTO[] = [
     InventoryType: "CraftingInventory",
     ItemSlots: 17,
     MaxWeight: 20.0,
+    IsLocked: false,
     Items: [
       {
         ItemId: "a485855a-962d-4cb3-890c-1cb35eebef2d",

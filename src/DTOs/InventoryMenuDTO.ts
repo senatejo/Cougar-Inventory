@@ -12,6 +12,7 @@ export interface InventoryMenuDTO {
   characterkey: string;
   mainInventory: boolean;
   MaxWeight: number;
+  IsLocked: boolean;
   Items: InventoryMenuItemDTO[];
 }
 
