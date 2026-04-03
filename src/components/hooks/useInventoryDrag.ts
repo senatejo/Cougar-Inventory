@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { InventoryMenuItemDTO } from "../../DTOs/InventoryMenuDTO";
+import { isProduction } from "@/utils/Utilities";
 
 export function useInventoryDrag() {
   const [draggingItem, setDraggingItem] = useState<InventoryMenuItemDTO | null>(null);
@@ -24,8 +25,7 @@ export function useInventoryDrag() {
     };
 
     const handleMouseUp = () => {
-      setDraggingItem(null);
-      setStartPos(null);
+
     };
 
     document.addEventListener("mousemove", handleMouseMove);
@@ -41,31 +41,38 @@ export function useInventoryDrag() {
   // 🧹 Drop di luar inventory
   // ===============================
   useEffect(() => {
-    const handleGlobalMouseUp = (e: MouseEvent) => {
-      if (!draggingItem || !containerRef.current) return;
+const handleGlobalMouseUp = (e: MouseEvent) => {
+  if (!draggingItem || !containerRef.current) return;
 
-      const inventories = Array.from(
-        document.querySelectorAll(".inventory-container")
-      );
+  const inventories = Array.from(
+    document.querySelectorAll(".inventory-container")
+  );
 
-      const isInsideInventory = inventories.some(container => {
-        const rect = container.getBoundingClientRect();
-        return (
-          e.clientX >= rect.left &&
-          e.clientX <= rect.right &&
-          e.clientY >= rect.top &&
-          e.clientY <= rect.bottom
-        );
-      });
+  const isInsideInventory = inventories.some(container => {
+    const rect = container.getBoundingClientRect();
+    return (
+      e.clientX >= rect.left &&
+      e.clientX <= rect.right &&
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom
+    );
+  });
 
-      if (!isInsideInventory) {
-        console.log("Item dropped outside inventory:", draggingItem.ItemId);
-        //@ts-ignore
-        mp.trigger("DropItem::ClientToServer", draggingItem.ItemId);
-        setDraggingItem(null);
-        setStartPos(null);
-      }
-    };
+  if (!isInsideInventory) {
+    console.log("🌍 DROP LUAR KEDETECT:", draggingItem.ItemId);
+
+    if(isProduction()){
+      //@ts-ignore
+      mp.trigger("DropItem::ClientToServer", draggingItem.ItemId);
+    }
+  } else {
+    console.log("📦 DROP DI DALAM INVENTORY");
+  }
+
+  // ✅ RESET DI SINI SAJA
+  setDraggingItem(null);
+  setStartPos(null);
+};
 
     document.addEventListener("mouseup", handleGlobalMouseUp);
     return () => document.removeEventListener("mouseup", handleGlobalMouseUp);

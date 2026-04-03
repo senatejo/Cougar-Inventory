@@ -249,7 +249,7 @@ export const CraftingInventory = ({
                               border border-red-400/30
                               shadow-[0_0_10px_red]">
                     <span className="text-[10px] font-bold text-white">
-                      {item.order + 1}
+                      {item.order }
                     </span>
                   </div>
                 )}

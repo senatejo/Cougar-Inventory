@@ -276,7 +276,7 @@ export const ItemDetails: React.FC<ItemDetailsProps> = ({ item }) => {
           <span className="text-xs text-gray-400">Slot</span>
           <div className="flex items-center gap-1">
             <span className="text-red-400">#</span>
-            <span className="text-white font-medium">{item.order + 1}</span>
+            <span className="text-white font-medium">{item.order}</span>
           </div>
         </div>
       )}

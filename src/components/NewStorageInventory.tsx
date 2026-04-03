@@ -265,7 +265,7 @@ return (
                               shadow-[0_0_10px_red]">
                   <span className="text-[10px] font-black text-white
                                  [text-shadow:0_0_5px_white]">
-                    {item.order + 1}
+                    {item.order }
                   </span>
                 </div>
               )}

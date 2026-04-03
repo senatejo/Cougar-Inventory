@@ -97,7 +97,8 @@ function sendMove(
   console.log("📤 Move item:", {
     from: item.InventoryKey,
     to: toInventory,
-    order: toOrder
+    order: toOrder,
+    
   });
 
   if (!isProduction()) return;

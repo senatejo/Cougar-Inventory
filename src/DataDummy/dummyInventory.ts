@@ -9,7 +9,7 @@ const dummyInventory: InventoryMenuDTO[] = [
     InventoryType: "CharacterStorage",
     ItemSlots: 40,
     MaxWeight: 20.0,
-    IsLocked: true,
+    IsLocked: false,
     Items: 
     [
             {
@@ -37,7 +37,7 @@ const dummyInventory: InventoryMenuDTO[] = [
         MaxQuantity: 5,
         Weight: 3.0,
         itemPlacement: 0, // ✅ Default 0 untuk non-clothing
-        order: 0, // ✅ Urutan pertama di storage
+        order: 1, // ✅ Urutan pertama di storage
         IsInUse: true,
         item_use: false,
         UseFlag: "Reusable",
@@ -53,7 +53,7 @@ const dummyInventory: InventoryMenuDTO[] = [
         MaxQuantity: 5,
         Weight: 3.0,
         itemPlacement: 0, // ✅ Default 0 untuk non-clothing
-        order: 0, // ✅ Urutan pertama di storage
+        order: 2, // ✅ Urutan pertama di storage
         IsInUse: true,
         item_use: false,
         UseFlag: "Reusable",
@@ -69,7 +69,7 @@ const dummyInventory: InventoryMenuDTO[] = [
         MaxQuantity: 5,
         Weight: 3.0,
         itemPlacement: 0, // ✅ Default 0 untuk non-clothing
-        order: 0, // ✅ Urutan pertama di storage
+        order: 3, // ✅ Urutan pertama di storage
         IsInUse: true,
         item_use: true,
         UseFlag: "Reusable",
@@ -85,7 +85,7 @@ const dummyInventory: InventoryMenuDTO[] = [
         MaxQuantity: 5,
         Weight: 1.0,
         itemPlacement: 11, // ✅ Masih ada placement untuk jika dipindah ke clothing
-        order: 1, // ✅ Urutan kedua di storage
+        order: 4, // ✅ Urutan kedua di storage
         IsInUse: false,
         item_use: false,
         UseFlag: "None",
@@ -100,7 +100,7 @@ const dummyInventory: InventoryMenuDTO[] = [
         MaxQuantity: 10,
         Weight: 0.5,
         itemPlacement: 0, // ✅ Default 0
-        order: 2, // ✅ Urutan ketiga di storage
+        order: 5, // ✅ Urutan ketiga di storage
         IsInUse: false,
         item_use: false,
         UseFlag: "Reusable",
@@ -115,7 +115,7 @@ const dummyInventory: InventoryMenuDTO[] = [
         MaxQuantity: 10,
         Weight: 0.5,
         itemPlacement: 0, // ✅ Default 0
-        order: 3, // ✅ Urutan ketiga di storage
+        order: 6, // ✅ Urutan ketiga di storage
         IsInUse: false,
         item_use: false,
         UseFlag: "Reusable",
