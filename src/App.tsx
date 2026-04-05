@@ -30,11 +30,11 @@ function App() {
     toggleModal(value);
   }
 
-  useEffect(() => {
-  if (!isProduction()){
-setInventories(dummyInventory);
-  }
-}, []);
+//   useEffect(() => {
+//   if (!isProduction()){
+// setInventories(dummyInventory);
+//   }
+// }, []);
 
   useEffect(() => {
     const handleInventoryData = (data: InventoryMenuDTO[]) => {

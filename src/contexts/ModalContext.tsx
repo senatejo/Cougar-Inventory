@@ -5,7 +5,7 @@ const ModalContext = createContext<ModalContextProps | undefined>(undefined);
 
 export const ModalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [modals, setModals] = useState<ModalState>({
-        Inventory: true
+        Inventory: false
     });
 
     const showModal = (modalKey: keyof ModalState) => {

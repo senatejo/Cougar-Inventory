@@ -63,7 +63,7 @@ const handleMouseUp = (e: React.MouseEvent, placement: number) => {
       return;
     }
     console.log("🧤 Trigger drop to server, placement:", placement);
-    
+
     if(isProduction()){
           //@ts-ignore
     mp.trigger("MoveItem::ClientToServer", JSON.stringify({
@@ -87,7 +87,7 @@ const handleMouseUp = (e: React.MouseEvent, placement: number) => {
     const item = getItemByPlacement(placement);
     return (
     <div
-          className="rounded-full w-16 h-16 bg-gray-500/0 flex flex-col items-center justify-evenly border-gray-500 border-b-8 hover:bg-gray-500/70 hover:border-gray-600"
+          className="rounded-full w-16 h-16 bg-red-800/20 flex flex-col items-center justify-evenly border-red-900 border-b-8 hover:bg-gray-500/70 hover:border-gray-600"
           onMouseDown={(e) => handleMouseDown(e, item, placement)}
           onMouseUp={(e) => handleMouseUp(e, draggingItem?.itemPlacement || placement)}
         >
@@ -105,7 +105,7 @@ const handleMouseUp = (e: React.MouseEvent, placement: number) => {
               src={fallbackIcon}
               className="object-cover w-10 h-10"
             />
-            <h1>{placement}</h1>
+            <h1 className="text-white text-pretty font-semibold">{placement}</h1>
           </div>
         )}
       </div>
